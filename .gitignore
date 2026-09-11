@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.env
+*.pyc
+node_modules/
+dist/
+
+# Large datasets
+backend/train.csv
+backend/test.csv
+creditcard.csv

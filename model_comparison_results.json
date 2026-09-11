@@ -1,0 +1,121 @@
+[
+  {
+    "model": "LogReg (class-weighted)",
+    "precision": 0.0454,
+    "recall": 0.8933,
+    "f1": 0.0863,
+    "pr_auc": 0.7436,
+    "confusion_matrix": [
+      [
+        55477,
+        1410
+      ],
+      [
+        8,
+        67
+      ]
+    ]
+  },
+  {
+    "model": "LogReg (SMOTE)",
+    "precision": 0.0539,
+    "recall": 0.8933,
+    "f1": 0.1016,
+    "pr_auc": 0.7514,
+    "confusion_matrix": [
+      [
+        55710,
+        1177
+      ],
+      [
+        8,
+        67
+      ]
+    ]
+  },
+  {
+    "model": "RandomForest (class-weighted)",
+    "precision": 1.0,
+    "recall": 0.6533,
+    "f1": 0.7903,
+    "pr_auc": 0.8177,
+    "confusion_matrix": [
+      [
+        56887,
+        0
+      ],
+      [
+        26,
+        49
+      ]
+    ]
+  },
+  {
+    "model": "RandomForest (SMOTE)",
+    "precision": 0.9796,
+    "recall": 0.64,
+    "f1": 0.7742,
+    "pr_auc": 0.8202,
+    "confusion_matrix": [
+      [
+        56886,
+        1
+      ],
+      [
+        27,
+        48
+      ]
+    ]
+  },
+  {
+    "model": "XGBoost (class-weighted)",
+    "precision": 0.8871,
+    "recall": 0.7333,
+    "f1": 0.8029,
+    "pr_auc": 0.788,
+    "confusion_matrix": [
+      [
+        56880,
+        7
+      ],
+      [
+        20,
+        55
+      ]
+    ]
+  },
+  {
+    "model": "XGBoost (SMOTE)",
+    "precision": 0.8548,
+    "recall": 0.7067,
+    "f1": 0.7737,
+    "pr_auc": 0.7917,
+    "confusion_matrix": [
+      [
+        56878,
+        9
+      ],
+      [
+        22,
+        53
+      ]
+    ]
+  },
+  {
+    "model": "IsolationForest (unsupervised)",
+    "precision": 0.0141,
+    "recall": 0.0133,
+    "f1": 0.0137,
+    "pr_auc": 0.0358,
+    "confusion_matrix": [
+      [
+        56817,
+        70
+      ],
+      [
+        74,
+        1
+      ]
+    ]
+  }
+]
