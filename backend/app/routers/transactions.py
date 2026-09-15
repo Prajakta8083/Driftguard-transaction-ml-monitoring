@@ -1,13 +1,45 @@
+import os
 import numpy as np
-from fastapi import APIRouter, Depends, Request
+import pandas as pd
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app import models, schemas
+from app.config import settings
 from app.ml.feature_contract import transaction_to_feature_vector, FEATURE_ORDER
 from app.ml.model_loader import get_model_bundle, ModelBundle
 
 router = APIRouter()
+
+
+@router.get("/transactions/sample")
+def sample_transaction(label: int = 1):
+    """
+    Returns ONE real, genuinely-labeled row from the held-out test set —
+    label=1 for a real fraud example, label=0 for a real legitimate one.
+
+    This exists specifically because hand-typing arbitrary large numbers
+    into V1-V28 does NOT reliably produce a fraud prediction: those are
+    PCA components, and fraud correlates with a specific DIRECTION per
+    feature (often large-negative for V14/V12/V10), not with magnitude in
+    general. An out-of-distribution value just lands in whatever leaf
+    node the model happens to route extreme inputs to — not necessarily
+    the fraud leaf. Feeding the model a real row sidesteps that entirely.
+    """
+    if label not in (0, 1):
+        raise HTTPException(status_code=400, detail="label must be 0 or 1")
+    if not os.path.exists(settings.original_test_data_path):
+        raise HTTPException(
+            status_code=400,
+            detail=f"{settings.original_test_data_path} not found next to the backend — copy test.csv in.",
+        )
+    df = pd.read_csv(settings.original_test_data_path)
+    subset = df[df["Class"] == label]
+    if subset.empty:
+        raise HTTPException(status_code=404, detail=f"No rows with Class={label} in test.csv")
+    row = subset.sample(1).iloc[0]
+    return {feat: float(row[feat]) for feat in FEATURE_ORDER}
 
 
 @router.post("/transactions", response_model=schemas.TransactionResponse)

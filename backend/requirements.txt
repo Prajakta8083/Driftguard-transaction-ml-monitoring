@@ -12,3 +12,4 @@ joblib
 scipy
 numpy
 pandas
+pytest
