@@ -13,3 +13,4 @@ scipy
 numpy
 pandas
 pytest
+APScheduler
