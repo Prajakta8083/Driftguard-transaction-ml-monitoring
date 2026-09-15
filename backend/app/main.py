@@ -14,7 +14,7 @@ app = FastAPI(title="DriftGuard API")
 # quietly; it's worth being able to explain in an interview.
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r"http://(localhost|127\.0\.0\.1):5\d{3}",
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
