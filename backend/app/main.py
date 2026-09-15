@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.ml.model_loader import load_model_bundle
+from app.database import Base, engine
 from app.scheduler import start_scheduler
 from app.routers import transactions, predictions, feedback, monitoring, model as model_router
 
@@ -22,11 +23,8 @@ app.add_middleware(
 
 @app.on_event("startup")
 def startup_event():
-    # Loaded ONCE per process, cached for the life of the app — see
-    # app/ml/model_loader.py for why this matters.
+    Base.metadata.create_all(bind=engine)
     load_model_bundle()
-    # Background scheduler: drift + performance checks run on their own
-    # timer, independent of whether any HTTP request ever comes in.
     app.state.scheduler = start_scheduler()
 
 
