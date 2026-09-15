@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8000";
+const API_BASE = "https://driftguard-backend-xok2.onrender.com";
 
 async function request(path, options = {}) {
   const res = await fetch(`${API_BASE}${path}`, {
