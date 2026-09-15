@@ -8,20 +8,20 @@
   --text-faint: #94a3b8;
 
   /* Sidebar (dark, kept for contrast against the light content) */
-  --sidebar-bg: #0e1726;
+  --sidebar-bg: #0b0f1a;
   --sidebar-border: #1e293b;
   --sidebar-text: #94a3b8;
   --sidebar-text-active: #ffffff;
   --sidebar-hover-bg: #182338;
 
-  --brand: #4c6fff;
-  --brand-soft: #eef1ff;
+  --brand: #1d4ed8;
+  --brand-soft: #e8eefc;
 
-  --status-healthy: #17a673;
+  --status-healthy: #16a34a;
   --status-healthy-bg: #e6f7f1;
-  --status-warning: #b5790a;
+  --status-warning: #d97706;
   --status-warning-bg: #fdf3e0;
-  --status-critical: #d9463f;
+  --status-critical: #dc2626;
   --status-critical-bg: #fdecec;
 
   --font-ui: "Manrope", -apple-system, sans-serif;

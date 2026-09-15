@@ -136,7 +136,7 @@ export default function DriftDashboard() {
                 <YAxis stroke="var(--text-muted)" fontSize={11} />
                 <Tooltip contentStyle={{ background: "white", border: "1px solid var(--border)" }} />
                 <ReferenceLine y={0.2} stroke="var(--status-critical)" strokeDasharray="4 4" label={{ value: "threshold", fill: "var(--status-critical)", fontSize: 10 }} />
-                <Line type="monotone" dataKey="drift_score" stroke="#4c6fff" dot={{ r: 3 }} strokeWidth={2} />
+                <Line type="monotone" dataKey="drift_score" stroke="#1d4ed8" dot={{ r: 3 }} strokeWidth={2} />
               </LineChart>
             </ResponsiveContainer>
           )}

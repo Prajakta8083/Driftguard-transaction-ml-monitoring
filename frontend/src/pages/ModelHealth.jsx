@@ -101,9 +101,9 @@ export default function ModelHealth() {
               <YAxis domain={[0, 1]} stroke="var(--text-muted)" fontSize={11} />
               <Tooltip contentStyle={{ background: "white", border: "1px solid var(--border)" }} />
               <Legend />
-              <Line type="monotone" dataKey="precision" name="Precision" stroke="#4c6fff" dot={false} strokeWidth={2} />
-              <Line type="monotone" dataKey="recall" name="Recall" stroke="#17a673" dot={false} strokeWidth={2} />
-              <Line type="monotone" dataKey="f1" name="F1" stroke="#b5790a" dot={false} strokeWidth={2} />
+              <Line type="monotone" dataKey="precision" name="Precision" stroke="#1d4ed8" dot={false} strokeWidth={2} />
+              <Line type="monotone" dataKey="recall" name="Recall" stroke="#16a34a" dot={false} strokeWidth={2} />
+              <Line type="monotone" dataKey="f1" name="F1" stroke="#d97706" dot={false} strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
         )}

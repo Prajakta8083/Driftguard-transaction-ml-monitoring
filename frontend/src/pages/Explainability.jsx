@@ -68,7 +68,7 @@ export default function Explainability() {
               <XAxis type="number" stroke="var(--text-muted)" fontSize={11} />
               <YAxis type="category" dataKey="feature" stroke="var(--text-muted)" fontSize={11} width={50} />
               <Tooltip contentStyle={{ background: "white", border: "1px solid var(--border)" }} />
-              <Bar dataKey="importance" fill="#4c6fff" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="importance" fill="#1d4ed8" radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         )}

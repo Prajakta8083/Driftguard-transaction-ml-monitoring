@@ -30,6 +30,17 @@ export default function LiveScoring() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [feedbackSent, setFeedbackSent] = useState(false);
+  const [sampleError, setSampleError] = useState(null);
+
+  async function loadRealSample(label) {
+    setSampleError(null);
+    try {
+      const sample = await api.getSampleTransaction(label);
+      setForm(sample);
+    } catch (err) {
+      setSampleError(err.message);
+    }
+  }
 
   function updateField(key, value) {
     setForm((f) => ({ ...f, [key]: value === "" ? "" : Number(value) }));
@@ -122,14 +133,30 @@ export default function LiveScoring() {
               </div>
             </details>
 
-            <div style={{ display: "flex", gap: 10, marginTop: 16 }}>
+            <div style={{ display: "flex", gap: 10, marginTop: 16, flexWrap: "wrap" }}>
               <button type="submit" className="btn-primary" disabled={loading}>
                 {loading ? "Scoring…" : "Score transaction"}
               </button>
+              <button type="button" className="btn-secondary" onClick={() => loadRealSample(0)}>
+                Load real legitimate example
+              </button>
+              <button type="button" className="btn-secondary" onClick={() => loadRealSample(1)}>
+                Load real fraud example
+              </button>
               <button type="button" className="btn-secondary" onClick={() => setForm(randomSamplePayload())}>
-                Fill random sample
+                Fill arbitrary random values
               </button>
             </div>
+            {sampleError && (
+              <p style={{ fontSize: 12, color: "var(--status-critical)", marginTop: 8 }}>
+                Couldn't load a real example: {sampleError}. Make sure test.csv is in the backend folder.
+              </p>
+            )}
+            <p style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 8 }}>
+              Tip: "Load real fraud example" pulls an actual, confirmed-fraud transaction from the
+              held-out test set — this is far more reliable for testing than typing in large numbers,
+              since V1–V28 don't get "more suspicious" just because they're bigger.
+            </p>
           </form>
         </div>
 

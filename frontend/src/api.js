@@ -15,6 +15,7 @@ async function request(path, options = {}) {
 export const api = {
   postTransaction: (payload) =>
     request("/transactions", { method: "POST", body: JSON.stringify(payload) }),
+  getSampleTransaction: (label) => request(`/transactions/sample?label=${label}`),
 
   getPredictionHistory: (page = 1, pageSize = 20) =>
     request(`/predictions/history?page=${page}&page_size=${pageSize}`),
